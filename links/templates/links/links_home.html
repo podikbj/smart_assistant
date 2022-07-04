@@ -1,0 +1,16 @@
+{% extends 'links/links_basic.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<ul class="list-articles">
+    {% for l in links %}
+    <li>
+        <a href="{{ l.get_absolute_url }}"><img src="{% static 'main/img/edit.ico' %}" alt="logo"></a>
+        <h3>{{l.title}}</h3>
+        <p>Subcategory: {{l.sub_category}}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

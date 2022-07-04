@@ -1,0 +1,13 @@
+{% extends 'main/main_basic.html' %}
+
+{% block content%}
+    <div class="feature">
+        <h1>Update task</h1>
+        <p>{{ task.context }}</p>
+        <p>{{ task.deadline_day }}</p>
+        <p>{{ task.deadline_time }}</p>
+        <a href="{% url 'taskboard_home' %}"><button class="btn btn-warning"><i class="fas fa-backward"></i>Back</button></a>
+        <a href="{% url 'task_delete' task.id %}" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>
+        <a href="{% url 'task_update' task.id %}" class="btn btn-info"><i class="fa fa-upload"></i>Update</a>
+    </div>
+{% endblock %}

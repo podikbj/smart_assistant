@@ -1,0 +1,28 @@
+{% extends 'main/main_basic.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block task_content %}
+<aside>
+
+    <h1>{{title}}</h1>
+    <a href="{% url 'create_task' %}">Add task</a>
+
+</aside>
+
+<ul class="list_tasks">
+    {% for t in tasks %}
+    <li>
+        <div class="task_context">
+            <p> {{t.context}}</p>
+        </div>
+
+        <p> Deadline day: {{t.deadline_day}}</p>
+        <p> Deadline time: {{t.deadline_time}}</p>
+        <p> Created on: {{t.created_on}}</p>
+        <a href="{{ t.get_absolute_url }}"><img src="{% static 'main/img/edit.ico' %}" alt="logo"></a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

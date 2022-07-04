@@ -1,0 +1,15 @@
+{% extends 'links/links_basic.html' %}
+
+{% block title %} {{ link.title }} {% endblock %}
+
+{% block content%}
+    <div class="feature">
+        <h1>{{ link.title }}</h1>
+        <p>{{ link.sub_category }}</p>
+        <p>{{ link.url }}</p>
+        <p>{{ link.context }}</p>
+        <a href="{% url 'links_home' %}"><button class="btn btn-warning"><i class="fas fa-backward"></i>Back</button></a>
+        <a href="{% url 'link_delete' link.id %}" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>
+        <a href="{% url 'link_update' link.id %}" class="btn btn-info"><i class="fa fa-upload" aria-hidden="false"></i>Update</a>
+    </div>
+{% endblock %}
