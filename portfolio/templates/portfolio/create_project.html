@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main/main_basic.html' %}
 
-</body>
-</html>
+{% block title %} {{ Add project }} {% endblock %}
+
+{% block content %}
+<div class="feature">
+    <h1>{{ Add project }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.summary }}<br>
+        {% if form.category.title == 'Python' %}
+             <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/python.svg' %}" alt="logo"></a>
+        {% elif p.category.title == 'JavaScript' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/javascript.svg' %}" alt="logo"></a>
+        {% elif p.category.title == 'NodeJS' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/tomato.svg' %}" alt="logo"></a>
+         {% elif p.category.title == 'FrontEnd' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/html.png' %}" alt="logo"></a>
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/css.png' %}" alt="logo"></a>
+        {% endif %}
+
+        {{ form.url }}
+        <br>
+
+        <span>{{ error }}</span>
+        <br>
+
+        <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Save</button>
+
+    </form>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@ class Portfolio(models.Model):
     url = models.URLField(max_length=255, unique=True, db_index=True, verbose_name='url', null=True)
 
     def __str__(self):
-        return 'My '+ self.category.__str__() + 'project'
+        return 'My '+ self.category.__str__() + ' project'
     class Meta():
         verbose_name = 'Link to a certain project'
         verbose_name_plural = 'Links to a certain projects'
