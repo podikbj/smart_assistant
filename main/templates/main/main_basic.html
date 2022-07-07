@@ -16,12 +16,10 @@
 <body>
     <div class="header">
         <ul id="mainmenu" class="mainmenu">
-            <!--        <img src="{% static 'main/img/tomato.svg' %}" alt="logo">-->
-            <!--            <li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>-->
             <li><a href="{% url 'home' %}"> Home </a></li>
             <li><a href="{% url 'portfolio_home' %}">Portfolio</a></li>
             <li><a href="{% url 'links_home' %}">Links </a></li>
-            <li><a href='#blog'>Blog </a></li>
+            <li><a href="{% url 'blog_home' %}">Blog </a></li>
             <li><a href="{% url 'taskboard_home' %}">Taskboard</a></li>
             <li><a href='#trips'>Trips </a></li>
             <li><a href="{% url 'about' %}">About me </a></li>
@@ -46,6 +44,8 @@
     {% block task_content %}
     {% endblock %}
     {% block portfolio_content %}
+    {% endblock %}
+    {% block blog_content %}
     {% endblock %}
     <main>
         {% block content %}

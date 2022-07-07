@@ -1,7 +1,30 @@
 {% extends 'main/main_basic.html' %}
 {% load static %}
 
+{% block title %} {{ title }} {% endblock %}
 
 {% block portfolio_content %}
 <h1>Hi, I'am Kira</h1>
+
+<ul class="list_tasks">
+    {% for p in projectss %}
+    <li>
+        {% if p.category.title == 'Python' %}
+             <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/python.svg' %}" alt="logo"></a>
+        {% elif p.category.title == 'JavaScript' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/javascript.svg' %}" alt="logo"></a>
+        {% elif p.category.title == 'NodeJS' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/tomato.svg' %}" alt="logo"></a>
+         {% elif p.category.title == 'FrontEnd' %}
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/html.png' %}" alt="logo"></a>
+            <a href="{{ p.get_absolute_url }}"><img src="{% static 'main/img/css.png' %}" alt="logo"></a>
+        {% endif %}
+
+        <div class="task_context">
+            <p> {{p.summary}}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
+
