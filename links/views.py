@@ -8,7 +8,12 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 class LinkDetailView(DetailView):
     model = Links
     template_name = 'links/link_details.html'
-    context_object_name = 'link'
+    context_object_name =  'link'
+
+class CategoryDetailView(DetailView):
+        model = Categories
+        template_name = 'links/link_details.html'
+        context_object_name = 'category'
 
 class LinkUpdateView(UpdateView):
     model = Links

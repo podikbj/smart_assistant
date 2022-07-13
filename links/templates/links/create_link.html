@@ -1,9 +1,11 @@
-{% extends 'links/links_basic.html' %}
+{% extends 'links/links_home.html' %}
 
 {% block title %} {{ title }} {% endblock %}
 
 {% block content%}
-<div class="feature">
+<div class="container">
+    <a href="{% url 'links_home' %}"><button type="button" class="btn-close" aria-label="Close"></button></a>
+
     <h1>{{ title }}</h1>
     <form method="post">
         {% csrf_token %}
@@ -16,13 +18,15 @@
         <br>
         {{ form.url }}
         <br>
-        {{ form.context }}<br>
-
-        <span>{{ error }}</span>
-        <br>
+        {{ form.context }}
 
         <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Save</button>
+
+
+        <span class="pr-5">{{ error }}</span>
+
 
     </form>
 </div>
 {% endblock %}
+

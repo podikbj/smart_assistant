@@ -22,7 +22,7 @@ class LinkForm(ModelForm):
                 'placeholder': 'URL address'
             }),
             "context": Textarea(attrs={
-                'cols': 60, 'rows':10,
+                'cols': 60, 'rows':5,
                 'placeholder': 'context'
             })
 
