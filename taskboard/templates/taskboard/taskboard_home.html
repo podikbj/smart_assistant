@@ -3,26 +3,56 @@
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block task_content %}
-<aside>
+<!--START HEADER-->
+{% block header %}
+<header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap">
+        <a href="{% url 'create_task' %}"
+           class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+            <button type="button" class="btn btn-default"><img class="icon" src="{% static 'main/img/add.ico' %}">New
+                task
+            </button>
+        </a>
+        <span class="fs-4">Weather</span>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+    </div>
+</header>
+{% endblock %}
+<!--END HEADER-->
 
-    <h1>{{title}}</h1>
-    <a href="{% url 'create_task' %}">Add task</a>
+{% block content %}
+<!-- START TASKS SECTION -->
+<section id="tasks" class="tasks-section">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h3 class="fw-light">{{ title }}</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                {% for t in tasks %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text"> {{t.context}}</p>
+                            <p class="card-text"> Deadline day: {{t.deadline_day}}</p>
+                            <p class="card-text"> Deadline time: {{t.deadline_time}}</p>
 
-</aside>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
 
-<ul class="list_tasks">
-    {% for t in tasks %}
-    <li>
-        <div class="task_context">
-            <p> {{t.context}}</p>
+                                    <a href="{{ t.get_absolute_url }}"><img class="icon"
+                                                                            src="{% static 'main/img/edit.ico' %}"
+                                                                            alt="logo"></a>
+                                </div>
+                            </div>
+                            <p class="card-text"> Created on: {{t.created_on}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
-        <p> Deadline day: {{t.deadline_day}}</p>
-        <p> Deadline time: {{t.deadline_time}}</p>
-        <p> Created on: {{t.created_on}}</p>
-        <a href="{{ t.get_absolute_url }}"><img src="{% static 'main/img/edit.ico' %}" alt="logo"></a>
-    </li>
-    {% endfor %}
-</ul>
+    </div>
+</section>
+<!-- END TASKS SECTION -->
 {% endblock %}
