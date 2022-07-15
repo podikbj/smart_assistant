@@ -1,5 +1,6 @@
 {% extends 'main/main_basic.html' %}
 {% load static %}
+
 <!-- START head -->
 {% block title %} {{ title }} {% endblock %}
 <!-- END head -->
@@ -23,13 +24,14 @@
                 <li class="nav-item"><a href="#contact" class="nav-link link-dark px-2">Contact</a></li>
             </ul>
         </div>
+    </div>
 </nav>
 <!--</header>-->
 <!-- END NAV -->
 {% endblock %}
 
 <!-- START WELCOME SECTION -->
-{% block content %}
+ {% block album %}
 <section id="welcome-section" class="py-5 text-center container">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">

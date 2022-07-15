@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Task(models.Model):
     context = models.TextField(max_length=300, verbose_name='Task')
     created_on = models.DateTimeField('Date', auto_now_add=True)

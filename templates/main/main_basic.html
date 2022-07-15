@@ -80,7 +80,7 @@
         }
     </style>
     <!-- My styles  -->
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
 <main role="main">
@@ -94,7 +94,8 @@
                 <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">Blog</a></li>
                 <li class="nav-item"><a href="{% url 'taskboard_home' %}" class="nav-link link-dark px-2">Taskboard</a>
                 </li>
-                <li class="nav-item"><a href="#contacts" class="nav-link link-dark px-2">Contact</a></li>
+                <li class="nav-item"><a href="mailto: kira.moshkova@gmail.com" class="nav-link link-dark px-2">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link link-dark px-2">About</a></li>
             </ul>
             <ul class="nav">
                 <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
@@ -106,11 +107,28 @@
     {% block header %}
     {% endblock %}
 
-    {% block sidebar %}
-    {% endblock %}
+    {% block album %}
+    <!-- START CONTENT -->
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h3 class="fw-light">{{ title }}</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
 
-    {% block content %}
-    {% endblock %}
+                {% for el in elements %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- END CONTEXT SECTION -->
+    {% endblock album%}
 
     <div class="b-example-divider"></div>
 </main>
@@ -127,7 +145,7 @@
             <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link px-2 text-muted">Blog</a></li>
             <li class="nav-item"><a href="{% url 'taskboard_home' %}" class="nav-link px-2 text-muted">Taskboard</a>
             </li>
-            <li class="nav-item"><a href="#contact" class="nav-link px-2 text-muted">Contact</a>
+            <li class="nav-item"><a href="mailto: kira.moshkova@gmail.com" class="nav-link px-2 text-muted">Contact</a>
             </li>
         </ul>
     </footer>

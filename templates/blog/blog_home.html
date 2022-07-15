@@ -1,0 +1,26 @@
+{% extends 'main/main_basic.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block header %}
+<header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap">
+
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<p class="card-text"> {{el.title}}</p>
+<p class="card-text"> {{el.pub_date}}</p>
+<p class="card-text"> {{el.body}}</p>
+
+<div class="d-flex justify-content-between align-items-center">
+    <div class="btn-group">
+        <a href="{{ el.get_absolute_url }}" class="btn btn-sm btn-outline-secondary">
+            View
+        </a>
+    </div>
+</div>
+{% endblock %}

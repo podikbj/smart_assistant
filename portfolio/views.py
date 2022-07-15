@@ -7,11 +7,10 @@ def portfolio_home(request):
     data = {
         'title' : 'Portfolio',
         'projects' : projects,
-        'python' : 'main/img/python.svg',
-        'javascript': 'main/img/javascript.svg',
-        'nodejs': 'main/img/nodejs.svg',
-        'html_css': 'main/img/code.png',
-
+        'python' : 'img/python.svg',
+        'javascript': 'img/javascript.svg',
+        'nodejs': 'img/nodejs.svg',
+        'html_css': 'img/code.png',
     }
     return render(request, 'portfolio/portfolio_home.html', data)
 

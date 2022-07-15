@@ -65,7 +65,7 @@ def show_category(request, category_id):
     context = {
         'links': links,
         'categories': categories,
-        'title': 'Отображение по рубрикам',
+        'title': 'Display by category',
         'cat_selected': category_id,
     }
 

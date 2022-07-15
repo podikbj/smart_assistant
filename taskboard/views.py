@@ -23,7 +23,7 @@ def taskboard_home(request):
 
     data = {
         'title': 'Taskboard',
-        'tasks': tasks,
+        'elements': tasks,
     }
     return render(request, 'taskboard/taskboard_home.html', data)
 
