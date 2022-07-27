@@ -1,32 +1,41 @@
 {% extends 'links/links_home.html' %}
+{% load static %}
 
 {% block title %} {{ link.title }} {% endblock %}
 
-{% block content %}
-<!-- START LINKS SECTION -->
-
-<div class="container">
-    <div class="input-text">
-        <h1>{{ link.title }}</h1>
-
-        <h4>Sub category</h4>
-        <p>{{ link.sub_category }}</p>
-        <h4>Link</h4>
-
-        <i class="fa fa-lock"></i>
-        <input type="text" id="social_input" value="{{ link.url }}">
-        <i class="fa fa-copy"></i>
-
-        <h4>Context</h4>
-        <p>{{ link.context }}</p>
-        <p class="pb-3">
-            <a href="{% url 'link_delete' link.id %}" class="btn btn-danger"><i
-                    class="fas fa-trash"></i>Delete</a>
-            <a href="{% url 'link_update' link.id %}" class="btn btn-info"><i class="fa fa-upload"
-                                                                              aria-hidden="false"></i>Update</a>
-        </p>
+{% block header %}
+<header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap">
+        <span class="fs-4">Weather</span>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
     </div>
+</header>
+{% endblock %}
+
+{% block link_details %}
+
+<div class="input-text">
+    <h1>{{ link.title }}</h1>
+
+    <h4>Sub category</h4>
+    <p>{{ link.sub_category }}</p>
+    <h4>Link</h4>
+
+    <i class="fa fa-lock"></i>
+    <input type="text" id="social_input" value="{{ link.url }}">
+    <i class="fa fa-copy"></i>
+
+    <h4>Context</h4>
+    <p>{{ link.context }}</p>
+    <p class="pb-3">
+        <a href="{% url 'link_delete' link.id %}" class="btn btn-danger"><i
+                class="fas fa-trash"></i>Delete</a>
+        <a href="{% url 'link_update' link.id %}" class="btn btn-info"><i class="fa fa-upload"
+                                                                          aria-hidden="false"></i>Update</a>
+    </p>
+
 </div>
 
-<!-- END LINKS SECTION -->
 {% endblock %}

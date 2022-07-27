@@ -25,12 +25,11 @@ class LinkDeleteView(DeleteView):
     template_name = 'links/delete_link.html'
     success_url = '/links/'
 
-
 def links_home(request):
     links = Links.objects.order_by('sub_category')
     categories = Categories.objects.all()
     data = {
-        'title': 'Links home',
+        'title': 'Links',
         'links': links,
         'categories': categories
     }

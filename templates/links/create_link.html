@@ -1,32 +1,38 @@
-{% extends 'links/links_home.html' %}
+{% extends 'main/main_basic.html' %}
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block content%}
+{% block album%}
 <div class="container">
-    <a href="{% url 'links_home' %}"><button type="button" class="btn-close" aria-label="Close"></button></a>
 
-    <h1>{{ title }}</h1>
-    <form method="post">
-        {% csrf_token %}
+    <div class="d-flex align-items-end justify-content-end pt-2">
+        <a href="{% url 'links_home' %}">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </a>
+    </div>
 
-        {{ form.category }}<br>
-        <br>
-        {{ form.sub_category }}
-        <br>
-        {{ form.title }}
-        <br>
-        {{ form.url }}
-        <br>
-        {{ form.context }}
+    <div class="col-md-7 col-lg-6 forms_pos">
 
-        <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Save</button>
+        <h1>{{ title }}</h1>
+        <form method="post">
+            {% csrf_token %}
 
+            {{ form.category }}<br>
+            <br>
+            {{ form.sub_category }}
+            <br>
+            {{ form.title }}
+            <br>
+            {{ form.url }}
+            <br>
+            {{ form.context }}
 
-        <span class="pr-5">{{ error }}</span>
+            <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Save</button>
 
+            <span class="pr-5">{{ error }}</span>
 
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}
 

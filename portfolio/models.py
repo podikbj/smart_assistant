@@ -6,7 +6,12 @@ class Portfolio(models.Model):
     summary = models.TextField(max_length=400)
     skill = models.ForeignKey('Skill', on_delete=models.PROTECT, blank=True, null=True)
     created_on = models.DateField(auto_now_add=True, blank=True, null=True)
+    votes = models.IntegerField(default=0)
+
     # url = models.URLField(max_length=255, unique=True, db_index=True, verbose_name='url', null=True)
+
+    def get_absolute_url(self):
+        return f'/portfolio/{self.id}'
 
     def __str__(self):
         return self.title

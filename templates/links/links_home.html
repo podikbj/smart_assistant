@@ -27,13 +27,12 @@
         <!--START SIDEBARE-->
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-black min-vh-100">
-<!--                <span class="fs-4">{{ title }}</span>-->
-                <span class="fs-4">Categories:</span>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
+                <!--                <span class="fs-4">{{ title }}</span>-->
+                <span class="fs-4">Categories</span>
+                 <ul class="nav nav-pills flex-column mb-auto">
                     {% for cat in categories %}
                     <li class="nav-item">
-                        <a href="{{ cat.get_absolute_url }}" class="nav-link " aria-current="page">
+                        <a href="{{ cat.get_absolute_url }}" class="nav-link text-muted" aria-current="page">
                             {{ cat.title }}
                         </a>
                     </li>
@@ -48,6 +47,7 @@
             <section>
                 <div class="album py-5 bg-light">
                     <div class="container">
+                        {% block link_details %}
                         <h3 class="fw-light">{{ title }}</h3>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                             {% for l in links %}
@@ -69,6 +69,7 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            {% endblock %}
                         </div>
                     </div>
                 </div>

@@ -14,5 +14,5 @@ def portfolio_home(request):
     }
     return render(request, 'portfolio/portfolio_home.html', data)
 
-def project_detail(request):
+def project_detail(request, projectid):
     return render(request, 'portfolio/project_detail.html')

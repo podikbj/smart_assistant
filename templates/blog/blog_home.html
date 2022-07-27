@@ -4,23 +4,45 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block header %}
-<header class="py-3 mb-4 border-bottom">
+<header class="py-2 bg-red border-bottom ">
     <div class="container d-flex flex-wrap">
-
+        <ul class="nav me-auto text-center">
+            <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">All blogs</a></li>
+            {% for c in cities %}
+            <li class="nav-item"><a href="{{c.get_absolute_url}}" class="nav-link link-dark px-2">{{c}}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 </header>
 {% endblock %}
 
 {% block content %}
-<p class="card-text"> {{el.title}}</p>
-<p class="card-text"> {{el.pub_date}}</p>
-<p class="card-text"> {{el.body}}</p>
-
-<div class="d-flex justify-content-between align-items-center">
-    <div class="btn-group">
-        <a href="{{ el.get_absolute_url }}" class="btn btn-sm btn-outline-secondary">
-            View
-        </a>
+<a href="{{ el.get_absolute_url }}" class="text-decoration-none text-muted">
+    <div class="container d-flex flex-wrap">
+        <img class="image-fluid" src="{{el.image.url}}" height=200 width=200>
+        <h3> {{el.title}}</h3>
+        <ul>
+            <p> {{el.pub_date_pretty}}</p>
+            <p> {{el.summary}}</p>
+        </ul>
     </div>
-</div>
+</a>
 {% endblock %}
+
+{% block recent_blogs %}
+<div class="container pb-2 border-top">
+    <h2>Latest blogs</h2>
+    <hr>
+    {% for b in elements %}
+    {% if b.was_published_recently %}
+
+    <h4> {{b.title}}</h4>
+    <ul>
+        <p> {{b.pub_date_pretty}}</p>
+        <p> {{b.summary}}</p>
+    </ul>
+    <hr>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock recent_blogs%}

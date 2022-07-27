@@ -1,16 +1,18 @@
-{% extends 'links/links_basic.html' %}
+{% extends 'links/links_home.html' %}
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block content%}
-    <div class="feature">
-        <h1>{{ title }}</h1>
-            <form method="post">
+{% block album%}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <form method="post">
         {% csrf_token %}
 
         <button class="btn btn-warning" type="submit">Delete link</button>
-        <a href="{% url 'links_home' %}"><button class="btn btn-warning">Back</button></a>
+        <a href="{% url 'links_home' %}">
+            <button class="btn btn-warning">Back</button>
+        </a>
 
     </form>
-    </div>
+</div>
 {% endblock %}
