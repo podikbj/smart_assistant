@@ -3,16 +3,19 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block album%}
+{% if object %}
 <div class="container">
-    <h1>{{ title }}</h1>
+    <h3>{{ object }}</h3>
     <form method="post">
         {% csrf_token %}
-
-        <button class="btn btn-warning" type="submit">Delete link</button>
+        <p>Are you sure you want to delete object
+            <p class="text-nowrap bg-light border">{{ object }} ?</p>
+        </p>
+        <button class="btn btn-warning mb-5 mt-5" type="submit">Yes, delete</button>
         <a href="{% url 'links_home' %}">
-            <button class="btn btn-warning">Back</button>
+            <button class="btn btn-warning mb-5 mt-5">No</button>
         </a>
-
     </form>
 </div>
+{% endif %}
 {% endblock %}

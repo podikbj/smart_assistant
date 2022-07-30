@@ -17,16 +17,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <!--     Favicons -->
-    <!--    <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">-->
-    <!--    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">-->
-    <!--    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">-->
-    <!--    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">-->
-    <!--    <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">-->
-    <!--    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">-->
-    <!--    <meta name="theme-color" content="#712cf9">-->
-
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -85,35 +75,42 @@
 </head>
 <body>
 <main role="main">
-    <nav class="py-2 bg-light border-bottom">
-        <div class="container d-flex flex-wrap">
-            <ul class="nav me-auto">
-                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link link-dark px-2">Home</a></li>
-                <li class="nav-item"><a href="{% url 'portfolio_home' %}" class="nav-link link-dark px-2">Portfolio</a>
-                </li>
-                <li class="nav-item"><a href="{% url 'links_home' %}" class="nav-link link-dark px-2">Links</a></li>
-                <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">Blog</a></li>
-                <li class="nav-item"><a href="{% url 'taskboard_home' %}" class="nav-link link-dark px-2">Taskboard</a>
-                </li>
-                <li class="nav-item"><a href="mailto: kira.moshkova@gmail.com"
-                                        class="nav-link link-dark px-2">Contact</a></li>
-                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link link-dark px-2">About</a></li>
-            </ul>
-            <ul class="nav">
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img class="icon_portfolio" src="{% static 'img/letter-s.png' %}">
+                <span class="fs-4 ms-2">Smart assistant</span>
+            </a>
 
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{% url 'home' %}" class="nav-link px-2 link-dark">Home</a></li>
+                <li><a href="{% url 'portfolio_home' %}" class="nav-link px-2 link-dark">Portfolio</a></li>
+                <li><a href="{% url 'links_home' %}" class="nav-link px-2 link-dark">Links</a></li>
+                <li><a href="{% url 'blog_home' %}" class="nav-link px-2 link-dark">Blog</a></li>
+                <li><a href="{% url 'taskboard_home' %}" class="nav-link px-2 link-dark">TODO</a></li>
+                <li><a href="mailto: kira.moshkova@gmail.com" class="nav-link px-2 link-dark">Contact</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-default me-2">Login</button>
+                <button type="button" class="btn btn-default">Sign-up</button>
+            </div>
+        </header>
+    </div>
+
+    <!--    <nav class="py-2 bg-light border-bottom">-->
     {% block header %}
     {% endblock %}
-
+    <!--    </nav>-->
     {% block album %}
     <!-- START CONTENT -->
     <div class="album py-5 bg-light">
         <div class="container">
-            <h3>{{ title }}</h3>
+
+            <h3 text-center>{{ title }}</h3>
+            {% block todo_addnew %}
+            {% endblock %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
 
                 {% for el in elements %}
@@ -138,7 +135,7 @@
 
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; {% now "Y" %} Kira Moshkova</p>
+        <p class="col-md-4 mb-0 text-muted">&copy; {% now "Y" %} Smart assistent</p>
 
         <ul class="nav col-md-5 justify-content-end">
             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Home</a></li>
@@ -150,6 +147,18 @@
             </li>
             <li class="nav-item"><a href="mailto: kira.moshkova@gmail.com" class="nav-link px-2 text-muted">Contact</a>
             </li>
+        </ul>
+        <ul class="nav col-md-5 justify">
+            <a href="https://www.flaticon.com/free-icons/python" title="python icons">Python icons created by Freepik -
+                Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/java" title="java icons">Java icons created by Pixel perfect -
+                Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/css" title="css icons">Css icons created by Freepik -
+                Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/nodejs" title="nodejs icons">Nodejs icons created by Freepik -
+                Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/letter-s" title="Letter s icons">Letter s icons created by
+                Abrrakhlaed2626 - Flaticon</a>
         </ul>
     </footer>
 </div>

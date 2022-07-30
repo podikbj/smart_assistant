@@ -19,7 +19,7 @@
             </ul>
             <ul class="nav">
                 <li class="nav-item"><a href="#welcome-section" class="nav-link link-dark px-2">About</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link link-dark px-2">Workp</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link link-dark px-2">Work</a></li>
                 <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Resume</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link link-dark px-2">Contact</a></li>
             </ul>
@@ -58,13 +58,13 @@
                     <svg class="bi" width="1em" height="1em">
                         <use xlink:href="#toggles2"/>
                         {% if p.skill.title == 'Python' %}
-                        <img class="icon" src="{% static python %}" alt="python logo">
+                        <img class="icon_portfolio" src="{% static python %}" alt="python logo">
                         {% elif p.skill.title == 'JavaScript' %}
-                        <img class="icon" src="{% static javascript  %}" alt="JavaScript logo">
+                        <img class="icon_portfolio" src="{% static javascript  %}" alt="JavaScript logo">
                         {% elif p.skill.title == 'NodeJS' %}
-                        <img class="icon" src="{% static nodejs  %}" alt="NodeJS logo">
+                        <img class="icon_portfolio" src="{% static nodejs  %}" alt="NodeJS logo">
                         {% elif p.skill.title == 'HTML/CSS' %}
-                        <img class="icon" src="{% static html_css  %}" alt="html css logo">
+                        <img class="icon_portfolio" src="{% static html_css  %}" alt="html css logo">
                         {% endif %}
                     </svg>
                 </div>

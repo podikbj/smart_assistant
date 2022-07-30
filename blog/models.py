@@ -34,6 +34,8 @@ class Blog(models.Model):
 
 class Cities(models.Model):
     city_name = models.CharField(max_length=100)
+    lon = models.FloatField(default=0)
+    lat = models.FloatField(default=0)
 
     def get_absolute_url(self):
         return f'/blog/city/{self.id}'

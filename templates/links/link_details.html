@@ -3,17 +3,6 @@
 
 {% block title %} {{ link.title }} {% endblock %}
 
-{% block header %}
-<header class="py-3 mb-4 border-bottom">
-    <div class="container d-flex flex-wrap">
-        <span class="fs-4">Weather</span>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-    </div>
-</header>
-{% endblock %}
-
 {% block link_details %}
 
 <div class="input-text">
@@ -24,7 +13,7 @@
     <h4>Link</h4>
 
     <i class="fa fa-lock"></i>
-    <input type="text" id="social_input" value="{{ link.url }}">
+    <input type="text"  value="{{ link.url }}">
     <i class="fa fa-copy"></i>
 
     <h4>Context</h4>

@@ -2,15 +2,20 @@
 
 {% block title %} {{ title }} {% endblock %}
 
-{% block content%}
-    <div class="feature">
-        <h1>{{ title }}</h1>
-            <form method="post">
+{% block album%}
+{% if object %}
+<div class="container">
+    <h3>{{ object }}</h3>
+    <form method="post">
         {% csrf_token %}
-
-        <button class="btn btn-warning" type="submit">Delete link</button>
-        <a href="{% url 'links_home' %}"><button class="btn btn-warning">Back</button></a>
-
+        <p>Are you sure you want to delete object
+            <p class="text-nowrap bg-light border">{{ object }} ?</p>
+        </p>
+        <button class="btn btn-warning mb-5 mt-5" type="submit">Yes, delete</button>
+        <a href="{% url 'taskboard_home' %}">
+            <button class="btn btn-warning mb-5 mt-5">No</button>
+        </a>
     </form>
-    </div>
+</div>
+{% endif %}
 {% endblock %}

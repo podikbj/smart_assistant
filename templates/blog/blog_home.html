@@ -4,16 +4,26 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block header %}
-<header class="py-2 bg-red border-bottom ">
-    <div class="container d-flex flex-wrap">
-        <ul class="nav me-auto text-center">
+<!--<header class="py-2 bg-light border-bottom ">-->
+<nav class="py-2 border-bottom " style="background-color: #e3f2fd;">
+     <div class="container d-flex flex-wrap" >
+        <ul class="nav me-auto">
             <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">All blogs</a></li>
             {% for c in cities %}
             <li class="nav-item"><a href="{{c.get_absolute_url}}" class="nav-link link-dark px-2">{{c}}</a></li>
             {% endfor %}
         </ul>
+
+        <ul class="nav" >
+            {% for w in all_cities %}
+            <li class="nav-item ms-2">{{ w.city }}:{{ w.temp }}<sup>o</sup><img
+                    src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="weather icon"></li>
+            {% endfor %}
+        </ul>
+
     </div>
-</header>
+</nav>
+<!--</header>-->
 {% endblock %}
 
 {% block content %}

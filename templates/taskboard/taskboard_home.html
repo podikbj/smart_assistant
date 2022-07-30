@@ -3,24 +3,17 @@
 
 {% block title %} {{ title }} {% endblock %}
 
-<!--START HEADER-->
-{% block header %}
-<header class="py-3 mb-4 border-bottom">
-    <div class="container d-flex flex-wrap">
-        <a href="{% url 'create_task' %}"
-           class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-            <button type="button" class="btn btn-default"><img class="icon" src="{% static 'img/add.ico' %}">New
-                task
+{% block todo_addnew %}
+<div class="container bg-light">
+    <div class="text-center mb-3">
+        <a href="{% url 'create_task' %}" class="text-dark text-decoration-none">
+            <button type="button" class="btn btn-default">
+                <img class="icon_new" src="{% static 'img/add.ico' %}">New task
             </button>
         </a>
-        <span class="fs-4">Weather</span>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
     </div>
-</header>
+</div>
 {% endblock %}
-<!--END HEADER-->
 
 {% block content %}
 <p class="card-text"> {{el.context}}</p>
@@ -30,10 +23,10 @@
 <div class="d-flex justify-content-between align-items-center">
     <div class="btn-group">
 
-        <a href="{{ el.get_absolute_url }}"><img class="icon"
-                                                src="{% static 'img/edit.ico' %}"
-                                                alt="edit logo"></a>
+        <a href="{{ el.get_absolute_url }}"><img class="icon_new"
+                                                 src="{% static 'img/edit.ico' %}"
+                                                 alt="edit logo"></a>
     </div>
 </div>
-<p class="card-text"> Created on: {{el.created_on}}</p>
+
 {% endblock %}

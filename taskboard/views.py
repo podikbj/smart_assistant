@@ -22,7 +22,7 @@ def taskboard_home(request):
     tasks = Task.objects.order_by('deadline_day', 'deadline_time')
 
     data = {
-        'title': 'Taskboard',
+        'title': 'TODO',
         'elements': tasks,
     }
     return render(request, 'taskboard/taskboard_home.html', data)
