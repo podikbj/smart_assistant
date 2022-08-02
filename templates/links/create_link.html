@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <div class="col-md-7 col-lg-6 forms_pos">
+    <div class="col-md-7 col-lg-6 forms_pos mb-3">
 
         <h1>{{ title }}</h1>
         <form method="post">
@@ -24,10 +24,13 @@
             {{ form.title }}
             <br>
             {{ form.url }}
-            <br>
+            <br />
             {{ form.context }}
+            <br />
+            <br />
 
             <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Save</button>
+            <br />
 
             <span class="pr-5">{{ error }}</span>
 

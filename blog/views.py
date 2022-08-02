@@ -39,19 +39,19 @@ def blog_home(request):
     all_cities = getWeatherForCities()
 
     data = {
-        'title': 'Blog',
-        'elements': blog_list,
+        'title': 'Welcome to my travel blog!',
+        'elements': page_obj,
         'cities': cities,
-        'page_obj': page_obj,
+        'blogs': blog_list,
         'all_cities' : all_cities
     }
     return render(request, 'blog/blog_home.html', data)
 
 
-def city(request, cityid):
-    city = Cities.objects.get(id=cityid)
+def city(request, city_id):
+    city = Cities.objects.get(id=city_id)
     all_cities = getWeatherForCities(city)
-    blogs = Blog.objects.filter(city_id=cityid).order_by('pub_date')
+    blogs = Blog.objects.filter(city_id=city_id).order_by('pub_date')
 
     data = {
         'title': city.city_name,
@@ -62,8 +62,8 @@ def city(request, cityid):
     return render(request, 'blog/blog_home.html', data)
 
 
-def blog_details(request, blogid):
-    blog = Blog.objects.get(id=blogid)
+def blog_details(request, blog_id):
+    blog = Blog.objects.get(id=blog_id)
     city = Cities.objects.get(id=blog.city_id)
     all_cities = getWeatherForCities(city)
     data = {

@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -99,28 +100,22 @@
         </header>
     </div>
 
-    <!--    <nav class="py-2 bg-light border-bottom">-->
     {% block header %}
     {% endblock %}
-    <!--    </nav>-->
+
     {% block album %}
     <!-- START CONTENT -->
-    <div class="album py-5 bg-light">
+    <div class="album py-3 bg-light">
         <div class="container">
-
-            <h3 text-center>{{ title }}</h3>
+            <h3 class="text-center">{{ title }}</h3>
             {% block todo_addnew %}
             {% endblock %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-
                 {% for el in elements %}
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            {% block content %}
-                            {% endblock %}
-                        </div>
-                    </div>
+                    {% block content %}
+
+                    {% endblock %}
                 </div>
                 {% endfor %}
             </div>
@@ -159,7 +154,7 @@
                 Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/letter-s" title="Letter s icons">Letter s icons created by
                 Abrrakhlaed2626 - Flaticon</a>
-        </ul>
+             </ul>
     </footer>
 </div>
 

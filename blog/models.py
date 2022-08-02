@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+from django.urls import reverse
 
 
 class Blog(models.Model):
@@ -12,13 +13,13 @@ class Blog(models.Model):
     votes = models.IntegerField(default=0)
 
     def get_absolute_url(self):
-        return f'/blog/{self.id}'
+        return reverse('blog_details', kwargs={'blog_id': self.pk})
 
     def __str__(self):
         return self.title
 
     def was_published_recently(self):
-            return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
     def summary(self):
         return self.body[:100]
@@ -38,7 +39,7 @@ class Cities(models.Model):
     lat = models.FloatField(default=0)
 
     def get_absolute_url(self):
-        return f'/blog/city/{self.id}'
+        return reverse('city', kwargs={'city_id': self.pk})
 
     def __str__(self):
         return self.city_name

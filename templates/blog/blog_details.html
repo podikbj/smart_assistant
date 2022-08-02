@@ -2,16 +2,19 @@
 {% load static %}
 
 {% block album %}
-<div class="container">
-    <div class="row m-2 border">
-        <h1 class="text-left">{{blog.title}}</h1>
-        <p class="text-left"> Posted: {{blog.pub_date_pretty}}</p>
-        <img class="image-fluid mb-3" src="{{blog.image.url}}" height=500 width=200>
+<div class="container py-3 col d-flex justify-content-center">
+    <div class="card mb-10" style="width: 35rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{blog.title}}</h5>
+            <p class="card-text">Posted: {{blog.pub_date_pretty}}</p>
+            <p class="card-text">Posted: {{blog.body}} </p>
+        </div>
+        {% if blog.image %}
+        <img src="{{blog.image.url}}" class="card-img-bottom" alt="city photo">
+        {% endif %}
 
-        <p class="text-center"> {{blog.body}}</p>
     </div>
 </div>
-
 {% endblock %}
 
 {% block recent_blogs %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Task(models.Model):
     context = models.TextField(max_length=300, verbose_name='Task')
@@ -10,7 +11,7 @@ class Task(models.Model):
         return self.context
 
     def get_absolute_url(self):
-        return f'/taskboard/{self.id}'
+        return reverse('task_details', kwargs={'pk': self.pk})
 
     class Meta():
         verbose_name = 'Task'

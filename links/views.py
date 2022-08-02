@@ -26,27 +26,24 @@ class LinkDetailView(DetailView):
         context['categories'] = categories
         return context
 
-class CategoryDetailView(DetailView):
-    model = Categories
-    template_name = 'links/link_details.html'
-    context_object_name = 'category'
-
+# class CategoryDetailView(DetailView):
+#     model = Categories
+#     template_name = 'links/link_details.html'
+#     context_object_name = 'category'
 
 class LinkUpdateView(UpdateView):
     model = Links
     template_name = 'links/create_link.html'
     form_class = LinkForm
 
-
 def links_home(request):
     links = Links.objects.order_by('sub_category')
     data = {
-        'title': 'Links',
+        'title': 'Create, Update and Delete your links',
         'links': links,
         'categories': categories
     }
     return render(request, 'links/links_home.html', data)
-
 
 def create_link(request):
     error = ''
@@ -66,19 +63,15 @@ def create_link(request):
     }
     return render(request, 'links/create_link.html', data)
 
-
-def show_category(request, category_id):
+def show_links_by_category(request, category_id):
     links = Links.objects.filter(category_id=category_id)
     category = Categories.objects.get(id=category_id)
-
-    # if len(links) == 0:
-    #     raise Http404()
 
     context = {
         'links': links,
         'categories': categories,
         'title': category,
-        'cat_selected': category_id,
+
     }
 
     return render(request, 'links/links_home.html', context=context)

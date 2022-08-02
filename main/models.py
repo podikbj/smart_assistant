@@ -1,10 +1,10 @@
 from django.db import models
+from django.urls import reverse
 
 class MyApps(models.Model):
     app_name = models.CharField(max_length=200, verbose_name='App name')
-    url_str = models.CharField(max_length=200, verbose_name='url string', blank=True, null=True)
+    slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name="slug", null=True)
     summary = models.TextField(max_length=400)
-    image_url = models.URLField(max_length=255, unique=True, db_index=True, verbose_name='image_url', blank=True, null=True)
 
     def __str__(self):
         return self.app_name

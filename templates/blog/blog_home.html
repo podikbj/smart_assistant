@@ -4,46 +4,77 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block header %}
-<!--<header class="py-2 bg-light border-bottom ">-->
 <nav class="py-2 border-bottom " style="background-color: #e3f2fd;">
-     <div class="container d-flex flex-wrap" >
+    <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
-            <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">All blogs</a></li>
+            <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link link-dark px-2">All posts</a></li>
             {% for c in cities %}
             <li class="nav-item"><a href="{{c.get_absolute_url}}" class="nav-link link-dark px-2">{{c}}</a></li>
             {% endfor %}
         </ul>
 
-        <ul class="nav" >
+        <ul class="nav">
             {% for w in all_cities %}
             <li class="nav-item ms-2">{{ w.city }}:{{ w.temp }}<sup>o</sup><img
                     src="http://openweathermap.org/img/w/{{w.icon}}.png" alt="weather icon"></li>
             {% endfor %}
         </ul>
-
     </div>
 </nav>
-<!--</header>-->
 {% endblock %}
 
 {% block content %}
-<a href="{{ el.get_absolute_url }}" class="text-decoration-none text-muted">
-    <div class="container d-flex flex-wrap">
-        <img class="image-fluid" src="{{el.image.url}}" height=200 width=200>
-        <h3> {{el.title}}</h3>
-        <ul>
-            <p> {{el.pub_date_pretty}}</p>
-            <p> {{el.summary}}</p>
-        </ul>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <a href="{{ el.get_absolute_url }}" class="text-decoration-none text-muted">
+            <div class="container d-flex flex-wrap">
+                {% if el.image %}
+                <img class="image-fluid" src="{{el.image.url}}" height=200 width=200>
+                {% endif %}
+                <h3> {{el.title}}</h3>
+                <ul>
+                    <p> {{el.pub_date_pretty}}</p>
+                    <p> {{el.summary}}</p>
+                </ul>
+            </div>
+        </a>
     </div>
-</a>
+</div>
 {% endblock %}
 
 {% block recent_blogs %}
+
+<div class="container text-center mb-3 mt-3">
+    <ul class="pagination">
+        {% if elements.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ elements.previous_page_number }}">{{elements.previous_page_number}}</a>
+        </li>
+        {% endif %}
+
+        <li class="page-item "><a class="page-link" href="#">{{ elements.number }}</a></li>
+
+        {% if elements.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ elements.next_page_number }}">{{ elements.next_page_number }}</a></li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+
 <div class="container pb-2 border-top">
     <h2>Latest blogs</h2>
     <hr>
-    {% for b in elements %}
+    {% for b in blogs %}
     {% if b.was_published_recently %}
 
     <h4> {{b.title}}</h4>

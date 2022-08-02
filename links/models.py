@@ -12,12 +12,7 @@ class Links(models.Model):
     created_on = models.DateTimeField('Date', auto_now_add=True)
 
     def get_absolute_url(self):
-        return f'/links/{self.id}'
-
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(self.title)
-    #     super(Links, self).save(*args, **kwargs)
+        return reverse('link_details', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
@@ -34,8 +29,7 @@ class Categories(models.Model):
     def __str__(self):
         return self.title
     def get_absolute_url(self):
-        # return reverse('category', kwargs={'category_id': self.pk})
-        return f'/links/category/{self.id}'
+        return reverse('category', kwargs={'category_id': self.pk})
 
     class Meta():
         verbose_name = 'Category'
