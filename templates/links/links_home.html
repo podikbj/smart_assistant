@@ -1,9 +1,12 @@
 {% extends 'main/main_basic.html' %}
 {% load static %}
+{% load links_tags %}
 
 {% block title %} {{ title }} {% endblock %}
 
 {% block album %}
+{% get_all_categories as categories %}
+
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <!--START SIDEBARE-->
@@ -41,7 +44,7 @@
                             </div>
                         </div>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                            {% for l in links %}
+                            {% for l in page_obj %}
                             <div class="col">
                                 <div class="card shadow-sm text-center border-dark" style="background-color: #C1E1C1;">
                                     <div class="card-body">
@@ -68,8 +71,6 @@
                 </div>
             </section>
         </div>
-
-        <!-- END LINKS SECTION -->
     </div>
 </div>
 {% endblock %}

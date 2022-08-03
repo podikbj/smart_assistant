@@ -89,7 +89,7 @@
                 <li><a href="{% url 'links_home' %}" class="nav-link px-2 link-dark">Links</a></li>
                 <li><a href="{% url 'blog_home' %}" class="nav-link px-2 link-dark">Blog</a></li>
                 <li><a href="{% url 'taskboard_home' %}" class="nav-link px-2 link-dark">TODO</a></li>
-                <li><a href="mailto: kira.moshkova@gmail.com" class="nav-link px-2 link-dark">Contact</a></li>
+                <li><a href="{% url 'contact' %}" class="nav-link px-2 link-dark">Contact</a></li>
                 <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
             </ul>
 
@@ -111,10 +111,9 @@
             {% block todo_addnew %}
             {% endblock %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-                {% for el in elements %}
+                {% for el in page_obj %}
                 <div class="col">
                     {% block content %}
-
                     {% endblock %}
                 </div>
                 {% endfor %}
@@ -140,7 +139,7 @@
             <li class="nav-item"><a href="{% url 'blog_home' %}" class="nav-link px-2 text-muted">Blog</a></li>
             <li class="nav-item"><a href="{% url 'taskboard_home' %}" class="nav-link px-2 text-muted">Taskboard</a>
             </li>
-            <li class="nav-item"><a href="mailto: kira.moshkova@gmail.com" class="nav-link px-2 text-muted">Contact</a>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-2 text-muted">Contact</a>
             </li>
         </ul>
         <ul class="nav col-md-5 justify">

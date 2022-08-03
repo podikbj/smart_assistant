@@ -2,11 +2,11 @@
 {% load static %}
 {% load portfolio_tags %}
 
-
 {% block title %} {{ title }} {% endblock %}
 
 {% block header %}
-{% get_my_apps as skills %}
+{% get_all_skills as skills %}
+
 <nav class="px-5 navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Kira Moshkova</a>
@@ -28,7 +28,7 @@
                             <li><a class="dropdown-item" href="#projects">All</a></li>
                             {% for s in skills %}
                             <li><a class="dropdown-item" href="{{ s.get_absolute_url }}">{{ s }}</a></li>
-                           {% endfor %}
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
@@ -64,15 +64,20 @@
 <!-- START WELCOME SECTION -->
 {% block album %}
 
-<section id="welcome-section" class="py-5 text-center container">
-            <h1 class="lead text-muted">Hi, I am Kira</h1>
-            <p class="lead text-muted">I'm a backend developer and this is my first website</p>
-            <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-            </p>
+<div class="container py-3 col d-flex justify-content-center">
 
-</section>
+    <div class="card mb-10" style="width: 35rem;">
+        <div class="card-body text-center">
+            <h1 class="card-title">Hi, I am Kira</h1>
+            <p class="card-text">I'm a backend developer and this is my first website. I enjoy learning
+                about new CSS frameworks, anomation libraries, and SEO
+            </p>
+        </div>
+
+        <img src="{% static 'img/sky.jpg' %}" class="rounded-circle card-img-bottom" alt="my photo" height=300 width=50>
+    </div>
+</div>
+
 <!-- END WELCOME SECTION -->
 
 <!-- START PROJECTS SECTION -->
@@ -108,7 +113,7 @@
     <div class="text-center pt-3">
         <h2>Let's work together...</h2>
     </div>
-    <div class="contact-links text-center">
+    <div class="contact-links text-center mb-3">
         <a
                 href="https://facebook.com/freecodecamp"
                 target="_blank"
@@ -126,7 +131,7 @@
            target="_blank"
            class="btn contact-details"
         ><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="mailto: kira.moshkova@gmail.com" class="btn contact-details"><i
+        <a href="{% url 'contact' %}" class="btn contact-details"><i
                 class="fas fa-at"></i> Send a mail</a
         >
         <a href="tel:+420-776-443-019" class="btn contact-details"

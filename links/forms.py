@@ -28,6 +28,10 @@ class LinkForm(ModelForm):
 
         }
 
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['category'].empty_label = "Not defined"
+
 class CategoryForm(ModelForm):
     class Meta:
         model = Categories
