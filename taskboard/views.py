@@ -1,6 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from . models import *
 from .forms import *
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 
@@ -22,7 +21,8 @@ class TaskDeleteView(DeleteView):
 class TODOHome(ListView):
     model = Task
     template_name = 'taskboard/taskboard_home.html'
-    # context_object_name = 'elements'
+    context_object_name = 'page_obj'
+    allow_empty = False
     paginate_by = 8  # how may items per page
 
     def get_context_data(self, *, object_list=None, **kwargs):

@@ -1,0 +1,36 @@
+{% extends 'main/main_basic.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block album%}
+<div class="conteiner">
+
+    <div class="d-flex align-items-end justify-content-end pt-2">
+        <a href="{% url 'links_home' %}">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </a>
+    </div>
+
+    <div class="col-md-7 col-lg-6 forms_pos mb-3">
+        <h1>{{ title }}</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.username }}<br>
+            <br>
+            {{ form.email }}<br>
+            <br>
+            {{ form.password1 }}<br>
+            <br>
+            {{ form.password2 }}
+            <br/>
+            <br/>
+
+            <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i>Sign up</button>
+            <span class="pr-5">{{ error }}</span>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

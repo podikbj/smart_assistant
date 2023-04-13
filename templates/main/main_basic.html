@@ -70,6 +70,10 @@
             -webkit-overflow-scrolling: touch;
         }
 
+
+
+
+
     </style>
     <!-- My styles  -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -94,8 +98,13 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-default me-2">Login</button>
-                <button type="button" class="btn btn-default">Sign-up</button>
+                {% if request.user.is_authenticated%}
+                <a href="{% url 'logout' %}" class="nav-link px-2 link-dark"><button type="button" class="btn btn-outline-default me-2">Logout</button></a>
+                 {% else %}
+                <a href="{% url 'signup' %}" class="nav-link px-2 link-dark"><button type="button" class="btn btn-default">Sign up</button></a>
+                {% endif %}
+                <a href="{% url 'login' %}" class="nav-link px-2 link-dark"><button type="button" class="btn btn-default">Log in</button></a>
+
             </div>
         </header>
     </div>
@@ -153,7 +162,7 @@
                 Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/letter-s" title="Letter s icons">Letter s icons created by
                 Abrrakhlaed2626 - Flaticon</a>
-             </ul>
+        </ul>
     </footer>
 </div>
 
